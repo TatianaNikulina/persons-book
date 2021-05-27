@@ -1,8 +1,8 @@
 1. Person = {id, fName, lName, age, email, phone, avatar}
 2. Album = {id, personId, title}
 3. Photo = {id, albumId, title, src}
-4. Comments = {id, photoId, personId (Author), title, body}
-5. Blog = {id, personId, title, short, body, like, dislike}
+4. Comments = {id, photoId, personId (Author), title, body, datetime}
+5. Blog = {id, personId, title, short, body, like, dislike, datetime}
 
 1. Home - ...
 2. Persons List
@@ -17,3 +17,4 @@
 react-router-dom
 https://csslayout.io/patterns
 localStorage
+fontAwesome
