@@ -2,6 +2,7 @@ import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 import AddNewPerson from "../components/Persons/AddNewPerson";
 import Home from "../components/Home/Home";
+import Persons from "../components/Persons/Persons";
 
 const Pages = () => {
     return(
@@ -9,7 +10,10 @@ const Pages = () => {
             <Route exact={true} path="/">
                 <Home />
             </Route>
-            <Route to="/person/add">
+            <Route exact={true} path="/persons">
+                <Persons />
+            </Route>
+            <Route to="/persons/add">
                 <AddNewPerson />
             </Route>
         </Switch>

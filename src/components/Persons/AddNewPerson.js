@@ -29,33 +29,39 @@ const AddNewPerson = () => {
     }
 
     return (
-        <form onSubmit={submitHandle}>
-            <div>
-                <label>First Name</label>
-                <input type="text" name="fName" onChange={changeFieldHandle}/>
+        <div className="container">
+            <div className="w-50 mx-auto">
+                <form onSubmit={submitHandle}>
+                    <div className="form-group">
+                        <label>First Name</label>
+                        <input type="text" className="form-control" name="fName" onChange={changeFieldHandle}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Last Name</label>
+                        <input type="text" className="form-control" name="lName" onChange={changeFieldHandle}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Age</label>
+                        <input type="text" className="form-control" name="age" onChange={changeFieldHandle}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input type="text" className="form-control" name="email" onChange={changeFieldHandle}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Phone</label>
+                        <input type="text" className="form-control" name="phone" onChange={changeFieldHandle}/>
+                    </div>
+                    <div className="form-group mb-2">
+                        <label>Avatar</label>
+                        <input type="text" className="form-control" name="avatar" onChange={changeFieldHandle}/>
+                    </div>
+                    <div className="form-group">
+                        <button type="submit" className="btn btn-primary w-100">Add</button>
+                    </div>
+                </form>
             </div>
-            <div>
-                <label>Last Name</label>
-                <input type="text" name="lName" onChange={changeFieldHandle}/>
-            </div>
-            <div>
-                <label>Age</label>
-                <input type="text" name="age" onChange={changeFieldHandle}/>
-            </div>
-            <div>
-                <label>Email</label>
-                <input type="text" name="email" onChange={changeFieldHandle}/>
-            </div>
-            <div>
-                <label>Phone</label>
-                <input type="text" name="phone" onChange={changeFieldHandle}/>
-            </div>
-            <div>
-                <label>Avatar</label>
-                <input type="text" name="avatar" onChange={changeFieldHandle}/>
-            </div>
-            <button type="submit" className="btn">Add</button>
-        </form>
+        </div>
     )
 }
 

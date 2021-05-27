@@ -10,14 +10,15 @@ const App = () => {
     const [persons, setPersons] = useState(personsInitial)
 
     const addPerson = data => {
-        const newPersons = [...persons, data]
+        const newPersons = [...persons, {...data, id: Date.now()}]
         setPersons(newPersons)
         setPersonsToStorage(newPersons)
     }
 
     return (
         <GlobalContext.Provider value={{
-            addPerson
+            addPerson,
+            persons
         }}>
             <Navigation />
             <Pages />
