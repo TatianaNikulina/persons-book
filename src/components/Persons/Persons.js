@@ -3,8 +3,7 @@ import {GlobalContext} from "../App";
 import PersonCard from "./PersonCard";
 
 const Persons = () => {
-    const cnt = useContext(GlobalContext)
-    const {persons} = cnt
+    const {persons} = useContext(GlobalContext)
 
     const renderPersons = () => {
         if ( !persons.length ) {

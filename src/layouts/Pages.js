@@ -13,7 +13,7 @@ const Pages = () => {
             <Route exact={true} path="/persons">
                 <Persons />
             </Route>
-            <Route to="/persons/add">
+            <Route path="/persons/add">
                 <AddNewPerson />
             </Route>
         </Switch>
