@@ -14,7 +14,7 @@ const AlbumCard = ({album, photo}) => {
     }
 
     return (
-        <div className="col-6 col-sm-4 col-md-3">
+        <div className="col-6 col-sm-4 col-md-3 mb-2">
             <div className="card cur-pointer" onClick={clickHandler}>
                 <img src={photo.src} alt={album.title}/>
                 <div className="card-body">

@@ -52,10 +52,31 @@ const App = () => {
 
     }
 
+    const getAlbumById = (id) => {
+        const idx = albums.findIndex(album => album.id === id)
+        if ( idx === -1 ) {
+            return null
+        }
+        return albums[idx]}
+
+
     const [photos, setPhotos] = useState(photosInitial)
 
     const addNewPhoto = formData => {
         const newPhotos = [...photos, {...formData, id: Date.now(), like: 0, dislike: 0}]
+        setPhotos(newPhotos)
+        setPhotosToStorage(newPhotos)
+    }
+
+    const addPhotoReaction = (id, vote) => {
+        const newPhotos = [...photos]
+        const idx = newPhotos.findIndex(photo => photo.id === id )
+        if ( idx === -1) return false
+        if (vote === 1) {
+            newPhotos[idx].like++
+        } else {
+            newPhotos[idx].dislike++
+        }
         setPhotos(newPhotos)
         setPhotosToStorage(newPhotos)
     }
@@ -71,8 +92,10 @@ const App = () => {
             editPerson,
             albums,
             addNewAlbum,
+            getAlbumById,
             photos,
-            addNewPhoto
+            addNewPhoto,
+            addPhotoReaction
         }}>
             <Navigation />
             <Pages />
