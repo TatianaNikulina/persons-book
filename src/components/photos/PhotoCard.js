@@ -16,13 +16,12 @@ const PhotoCard = ({photo}) => {
                 <div className="card-body">
                     <p className="card-title">{photo.title}</p>
                     <p className="card-text">
-                        <button onClick={likeHandle} type="button" class="btn btn-success w-50">+ {photo.like}</button>
-                        <button onClick={dislikeHandle} type="button" class="btn btn-danger w-50">- {photo.dislike}</button>
+                        <button onClick={likeHandle} type="button" className="btn btn-success w-50">+ {photo.like}</button>
+                        <button onClick={dislikeHandle} type="button" className="btn btn-danger w-50">- {photo.dislike}</button>
                     </p>
                 </div>
             </div>
         </div>
-
     )
 }
 

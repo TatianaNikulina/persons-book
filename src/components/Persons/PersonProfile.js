@@ -3,14 +3,18 @@ import {useParams} from 'react-router-dom'
 import {GlobalContext} from "../App"
 import AddAlbum from "../Albums/AddAlbum";
 import PersonalAlbums from "../Albums/PersonalAlbums";
+import AddPost from "../posts/AddPost";
+import PersonalBlog from "../posts/PersonalBlog";
+
 
 const PersonProfile = () => {
 
     const {id} = useParams()
-    const {getPersonById, activePerson, editPerson, addNewAlbum} = useContext(GlobalContext)
+    const {getPersonById, activePerson, editPerson, addNewAlbum, addNewPost} = useContext(GlobalContext)
     const [person, setPerson] = useState(null)
     const [editMode, setEditMode ] =useState(false)
     const [addAlbum, setAddAlbum] = useState(false)
+    const [addPost, setAddPost] = useState(false)
 
     useEffect(() => {
         setPerson(getPersonById(id))
@@ -89,11 +93,13 @@ const PersonProfile = () => {
     }
 
     const renderEditButton = () => {
-        if ( activePerson !== person.id || editMode || addAlbum ) return null
+        if ( activePerson !== person.id || editMode || addAlbum || addPost) return null
         return (
             <div className="w-100">
                 <button onClick={editButtonHandle} className="w-100 btn btn-success my-2">Edit</button>
-                <button onClick={addAlbumButtonHandle} className="w-100 btn btn-info">Add Album</button>
+                <button onClick={addAlbumButtonHandle} className="w-100 btn btn-info mb-2">Add Album</button>
+                <button onClick={addBlogButtonHandle} className="w-100 btn btn-warning">Add Post</button>
+
             </div>
         )
     }
@@ -113,14 +119,30 @@ const PersonProfile = () => {
         setAddAlbum(false)
     }
 
+    const addBlogButtonHandle = event => {
+        event.preventDefault()
+        setAddPost(true)
+    }
+
+    const addNewPostHandle = formData => {
+        addNewPost(formData)
+        console.log(formData)
+        setAddPost(false)
+    }
+
     const renderPersonInfo = () => {
 
         if ( addAlbum ) {
             return (<AddAlbum onFinish={addNewAlbumHandle} />)
         }
 
+        if (addPost) {
+            return (<AddPost onFinish={addNewPostHandle}/>)
+        }
         return (<div>
             <PersonalAlbums personId={+id} />
+            <hr/>
+            <PersonalBlog personId={+id} />
         </div>)
 
     }

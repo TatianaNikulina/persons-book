@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import personsInitial, {setPersonsToStorage, activePersonId, setActivePersonIdToStorage} from "../data/persons";
 import albumsInitial, {setAlbumsToStorage} from '../data/albums'
 import photosInitial, {setPhotosToStorage} from '../data/photos'
-
+import postsInitial, {setPostsToStorage} from '../data/posts'
 
 import Navigation from "./Navigation";
 import Pages from "../layouts/Pages";
@@ -81,6 +81,14 @@ const App = () => {
         setPhotosToStorage(newPhotos)
     }
 
+    const [posts, setPosts] = useState(postsInitial)
+
+    const addNewPost = formData => {
+        const newPosts = [...posts, {...formData, id: Date.now(), datetime: Date.now() }]
+        setPosts(newPosts)
+        setPostsToStorage(newPosts)
+    }
+
 
     return (
         <GlobalContext.Provider value={{
@@ -95,7 +103,9 @@ const App = () => {
             getAlbumById,
             photos,
             addNewPhoto,
-            addPhotoReaction
+            addPhotoReaction,
+            posts,
+            addNewPost,
         }}>
             <Navigation />
             <Pages />
